@@ -1,11 +1,11 @@
-#!/bin/sh
+bin/sh
 
 BASEDIR=/srv/popcon.debian.org/popcon-mail
 MAILDIR=../Mail
 WEBDIR=../www
 LOGDIR=$BASEDIR/../logs
 BINDIR=$BASEDIR/../bin
-DATADIR=$BASEDIR/popcon-entries
+DATADIR=/var/lib/popcon/bin/popcon-entries
 SUMMARYDIR=$BASEDIR/all-popcon-results
 SUMMARYDIRSTABLE=$BASEDIR/all-popcon-results.stable
 
@@ -26,7 +26,8 @@ if [ true = "$READMAIL" ] ; then
     chmod go-rwx $MAILDIR/survey
 
     # process entries, splitting them into individual reports
-    $BINDIR/prepop.pl <new-popcon-entries >$LOGDIR/prepop.out 2>&1
+    /var/lib/popcon/bin/prepop.pl <new-popcon-entries >$LOGDIR/prepop.out 2>&1
+    
 fi
 
 # delete outdated entries
@@ -34,18 +35,28 @@ rm -f results results.stable
 find $DATADIR -type f -mtime +$DAYLIMIT -print0 | xargs -0 rm -f --
 
 # Generate statistics
+
 find $DATADIR -type f | xargs cat \
         | nice -15 $BINDIR/popanal.py >$LOGDIR/popanal.out 2>&1
+     
 cp results $WEBDIR/all-popcon-results
+
 cp results.stable $WEBDIR/stable/stable-popcon-results
 gzip -f $WEBDIR/all-popcon-results
+
 gzip -f $WEBDIR/stable/stable-popcon-results
 cp $WEBDIR/all-popcon-results.gz $SUMMARYDIR/popcon-`date +"%Y-%m-%d"`.gz
+
 cp $WEBDIR/stable/stable-popcon-results.gz $SUMMARYDIRSTABLE/popcon-`date +"%Y-%m-%d"`.stable.gz
 
+
 cd ../popcon-stat
-find $SUMMARYDIR -type f -print | sort | $BINDIR/popcon-stat.pl ../www/stat>$LOGDIR/popstat.log 2>&1 
-find $SUMMARYDIRSTABLE -type f -print | sort | $BINDIR/popcon-stat.pl ../www/stable/stat >> $LOGDIR/popstat.log 2>&1 
+
+find $SUMMARYDIR -type f -print | sort | $BINDIR/popcon-stat.pl #>$LOGDIR/popstat.log 
+ 
+#esta parte solo es para ejecutar popcon-stat.pl y crear las imagenes.png para la pestaña stable reports, requiere de results.stable y configurarlo 
+#find $SUMMARYDIRSTABLE -type f -print | sort | $BINDIR/popcon-stat.pl ../www/stable/stat >> $LOGDIR/popstat.log 2>&1 
 
 cd ../popcon-web
+
 $BINDIR/popcon.pl >$LOGDIR/popcon.log 2>$LOGDIR/popcon.errors

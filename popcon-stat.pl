@@ -1,17 +1,21 @@
-#! /usr/bin/perl -wT
+#! /usr/bin/perl 
 #
 # Require the debian package libchart-perl.
 
 $ENV{PATH}="/usr/bin:/bin";
-$dirpng = shift @ARGV;
-$dirpng =~ m/(.*)/ and $dirpng=$1;
+#$dirpng = shift @ARGV;
+#$dirpng =~ m/(.*)/ and $dirpng=$1;
+$dirpng = "/srv/popcon.debian.org/www/stat";
 $oneyearago = `date +"%Y-%m-%d" -d "1 year ago"`;
+print "apenas ejecutandose\n";
 
 while (<>)
 {
+   print "entrando en el bucle principal\n";
    my ($file);
    m/^(.*\/popcon-([0-9-]+)(\.stable)?\.gz)$/ or next;
    $file=$1;
+   print "nombre de archivo: $file\n";
    $f=$2;
    push @date,$f;
    open FILE,"zcat $file|";
@@ -86,7 +90,7 @@ sub submission_chart
   }
 
   $obj=Chart::LinesPoints->new (600,400);
-  $obj->set ('title' => "Number of submissions per architectures $title");
+  $obj->set ('title' => "Numeros de presentaciones por arquitectura $title");
   $obj->set ('legend_labels' => [@arch]);
   $obj->set ('f_y_tick' => \&ytick);
   $obj->set ('brush_size' => 3);
@@ -95,12 +99,13 @@ sub submission_chart
   $obj->set ('max_y_ticks' => 30);
   $obj->set ('y_ticks' => int $maxv +1);
   $obj->set ('x_ticks' => 'vertical');
+  $obj->set ('transparent' => true);
   $obj->set ('skip_x_ticks' => $ticks);
   $obj->png ("$dirpng/submission$pngname.png", \@data);
 }
 
 submission_chart ("","0000-00-00",63,"");
-submission_chart ("-1year",$oneyearago,14,"(last 12 months)");
+submission_chart ("-1year",$oneyearago,14,"(ultimos  12 meses)");
 
 use Chart::Composite;
 my (@days) = sort grep { defined($sub{$_}->{'i386'}) } @date;
@@ -118,12 +123,13 @@ for $arch (@arch)
   @data=(\@days,\@res,\@tot);
   @labels=($arch, 'all submissions');
   $obj=Chart::Composite->new (700,400);
-  $obj->set ('title' => "Number of submissions for $arch");
+  $obj->set ('title' => "Numeros de presentaciones por $arch");
   $obj->set ('legend_labels' => \@labels);
   $obj->set ('brush_size' => 3);
   $obj->set ('pt_size' => 7);
   $obj->set ('x_ticks' => 'vertical');
   $obj->set ('skip_x_ticks' => 63);
+  $obj->set ('transparent' => true);
   $obj->set ('composite_info' => [ ['LinesPoints', [1]], ['LinesPoints', [2] ] ]); 
   $obj->png ("$dirpng/sub-$arch.png", \@data);
 }
@@ -153,13 +159,14 @@ sub release_chart
     push @data,\@res;
   }
   $obj=Chart::LinesPoints->new (600,400);
-  $obj->set ('title' => "popularity-contest versions in use $title");
+  $obj->set ('title' => "Versiones de popularity-contest en uso $title");
   $obj->set ('legend_labels' => [@release]);
   $obj->set ('brush_size' => 3);
   $obj->set ('pt_size' => 3);
   $obj->set ('x_ticks' => 'vertical');
   $obj->set ('skip_x_ticks' => $ticks);
+  $obj->set ('transparent' => true);
   $obj->png ("$dirpng/release$pngname.png", \@data);
 }
 release_chart ("","2004-05-14",63,"");
-release_chart ("-1year",$oneyearago,14,"(last 12 months)");
+release_chart ("-1year",$oneyearago,14,"(ultimos 12 meses)");

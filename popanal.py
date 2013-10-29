@@ -41,16 +41,20 @@ class Stat:
   def output(self,filename):
     out = open(filename, 'w')
     out.write("Submissions: %8d\n" % self.count)
+    print "Submissions: %8d\n" % self.count
     releaselist = self.release.keys()
     releaselist.sort()
     for release in releaselist:
         out.write("Release: %-30s %5d\n"
                       % (release, self.release[release]))
+        print "Release: %-30s %5d\n" % (release, self.release[release])
     archlist = self.arch.keys()
     archlist.sort()
     for arch in archlist:
         out.write("Architecture: %-30s %5d\n"
                       % (arch, self.arch[arch]))
+        print "Architecture: %-30s %5d\n" % (arch, self.arch[arch])
+
     pkglist = self.vote.keys()
     pkglist.sort()
     for package in pkglist:
@@ -58,6 +62,7 @@ class Stat:
             out.write("Package: %-30s %5d %5d %5d %5d\n"
                       % (package, fv.yes, fv.old_unused,
                          fv.too_recent, fv.empty_package))
+            print "Package: %-30s %5d %5d %5d %5d\n" % (package, fv.yes, fv.old_unused, fv.too_recent, fv.empty_package)
     out.close()
 
 stat = Stat()

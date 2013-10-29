@@ -1,13 +1,14 @@
-#!/usr/bin/perl -wT
+#!/usr/bin/perl 
 # Accept popularity-contest entries on stdin and drop them into a
 # subdirectory with a name based on their MD5 ID.
 #
 # Only the most recent entry with a given MD5 ID is kept.
 #
 
-$dirname = 'popcon-entries';
+$dirname = '/var/lib/popcon/bin/popcon-entries';
 $now = time;
 $state='initial'; # one of ('initial','accept','reject')
+
 
 my($file,$mtime);
 while(<>)
@@ -21,6 +22,7 @@ while(<>)
        {
 	    my ($key, $value) = split(':', $_, 2);
             $field{$key}=$value;
+            
        };
        $id=$field{'ID'};
        if (!defined($id) || $id !~ /^([a-f0-9]{32})$/) 
@@ -29,9 +31,11 @@ while(<>)
          $state='reject'; next;
        }
        $id=$1; #untaint $id
+       
        $mtime=$field{'TIME'};
        if (!defined($mtime) || $mtime!~/^([0-9]+)$/)
        {
+         
          print STDERR "Bad mtime $mtime\n";
          $state='reject'; next;
        }
@@ -39,7 +43,9 @@ while(<>)
        $mtime=$now if ($mtime > $now);
        my $dir=substr($id,0,2);
        unless (-d "$dirname/$dir") {
+	 
          mkdir("$dirname/$dir",0755) or do {$state='reject';next;};
+         
        };
        $file="$dirname/$dir/$id"; 
        open REPORT, ">",$file or do {$state='reject';next;};
