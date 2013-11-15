@@ -57,7 +57,7 @@ install:
 	@touch slink-nonUS.sections $(DESTDIR)/srv/popcon-canaima/popcon-web
 	@touch woody.sections $(DESTDIR)/srv/popcon-canaima/popcon-web
 	@touch woody-nonUS.sections $(DESTDIR)/srv/popcon-canaima/popcon-web
-	@cp /imagenes.svg/logo_encuesta_canaima.svg $(DESTDIR)/srv/popcon-canaima/www/stat
+	@cp imagenes/logo_encuesta_canaima.svg $(DESTDIR)/srv/popcon-canaima/www/stat
 	@cp popcon-process.sh $(DESTDIR)/srv
 	@cp clean-filter $(DESTDIR)/srv/popcon-canaima/bin
 	@cp clean-genpkglist $(DESTDIR)/srv/popcon-canaima/bin
