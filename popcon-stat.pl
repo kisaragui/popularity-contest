@@ -5,7 +5,7 @@
 $ENV{PATH}="/usr/bin:/bin";
 #$dirpng = shift @ARGV;
 #$dirpng =~ m/(.*)/ and $dirpng=$1;
-$dirpng = "/srv/popcon.debian.org/www/stat";
+$dirpng = "/srv/popcon-canaima/www/stat";
 $oneyearago = `date +"%Y-%m-%d" -d "1 year ago"`;
 print "apenas ejecutandose\n";
 

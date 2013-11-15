@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BASEDIR=/srv/popcon-canaima/popcon-mail
+BASEDIR=/srv/popcon.debian.org/popcon-mail
 MAILDIR=../Mail
 WEBDIR=../www
 LOGDIR=$BASEDIR/../logs
