@@ -36,7 +36,7 @@ if [ "$DAY" ] && [ "$DAY" != "$(date +%w)" ] ; then
 		now=$(date +%s)
 		lastrun=$(date -r $POPCON +%s)
 		# 6.5 days, in seconds
-		week=561600
+		week=1
 		if [ "$(( $now - $lastrun ))" -le "$week" ]; then
 			exit 0
 		fi

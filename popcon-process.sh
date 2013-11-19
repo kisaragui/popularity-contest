@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BASEDIR=/srv/popcon.debian.org/popcon-mail
+BASEDIR=/srv/popcon-canaima/popcon-mail
 MAILDIR=../Mail
 WEBDIR=../www
 LOGDIR=$BASEDIR/../logs
@@ -21,12 +21,12 @@ umask 0002
 echo "pasando a /srv/popcon.debian.org/popcon-mail"
 # rotate incoming mail spool files
 if [ true = "$READMAIL" ] ; then
-    mv $MAILDIR/survey new-popcon-entries
     touch $MAILDIR/survey
     chmod go-rwx $MAILDIR/survey
+    mv $MAILDIR/survey new-popcon-entries
 
     # process entries, splitting them into individual reports
-    /var/lib/popcon/bin/prepop.pl <new-popcon-entries >$LOGDIR/prepop.out 2>&1
+    /var/lib/popcon/bin/prepop.pl </var/log/popularity-contest >$LOGDIR/prepop.out 2>&1
     echo "ejecuando prepop.pl"
 fi
 
