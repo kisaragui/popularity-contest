@@ -4,7 +4,14 @@
 . /usr/share/debconf/confmodule
 
 conffile=/etc/popularity-contest.conf
-
+#creando archivos para el popcon.pl
+touch etch.sections /srv/popcon-canaima/popcon-web
+touch potato.sections /srv/popcon-canaima/popcon-web
+touch potato-nonUS.sections /srv/popcon-canaima/popcon-web
+touch sarge.sections /srv/popcon-canaima/popcon-web
+touch slink.sections /srv/popcon-canaima/popcon-web
+touch slink-nonUS.sections /srv/popcon-canaima/popcon-web
+touch woody.sections /srv/popcon-canaima/popcon-web
 set -e
 
 if [ -e $conffile ] ; then
