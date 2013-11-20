@@ -49,14 +49,14 @@ install:
 	@mkdir -p $(DESTDIR)/srv/popcon-canaima/www/stable
 	@mkdir -p $(DESTDIR)/srv/popcon-canaima/www/stat
 	@mkdir -p $(DESTDIR)/var/lib/popcon/bin/popcon-entries
-	@touch etch.sections $(DESTDIR)/srv/popcon-canaima/popcon-web
-	@touch potato.sections $(DESTDIR)/srv/popcon-canaima/popcon-web
-	@touch potato-nonUS.sections $(DESTDIR)/srv/popcon-canaima/popcon-web
-	@touch sarge.sections $(DESTDIR)/srv/popcon-canaima/popcon-web
-	@touch slink.sections $(DESTDIR)/srv/popcon-canaima/popcon-web
-	@touch slink-nonUS.sections $(DESTDIR)/srv/popcon-canaima/popcon-web
-	@touch woody.sections $(DESTDIR)/srv/popcon-canaima/popcon-web
-	@touch woody-nonUS.sections $(DESTDIR)/srv/popcon-canaima/popcon-web
+	@cp popweb/etch.sections $(DESTDIR)/srv/popcon-canaima/popcon-web
+	@cp popweb/potato.sections $(DESTDIR)/srv/popcon-canaima/popcon-web
+	@cp popweb/potato-nonUS.sections $(DESTDIR)/srv/popcon-canaima/popcon-web
+	@cp popweb/sarge.sections $(DESTDIR)/srv/popcon-canaima/popcon-web
+	@cp popweb/slink.sections $(DESTDIR)/srv/popcon-canaima/popcon-web
+	@cp popweb/slink-nonUS.sections $(DESTDIR)/srv/popcon-canaima/popcon-web
+	@cp popweb/woody.sections $(DESTDIR)/srv/popcon-canaima/popcon-web
+	@cp popweb/woody-nonUS.sections $(DESTDIR)/srv/popcon-canaima/popcon-web
 	@cp imagenes/logo_encuesta_canaima.svg $(DESTDIR)/srv/popcon-canaima/www/stat
 	@cp popcon-process.sh $(DESTDIR)/srv
 	@cp clean-filter $(DESTDIR)/srv/popcon-canaima/bin
