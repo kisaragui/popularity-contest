@@ -1,8 +1,9 @@
 Source: popularity-contest
 Section: misc
 Priority: optional
-Maintainer: Popularity Contest Developers <popcon-developers@lists.alioth.debian.org>
-Uploaders: Petter Reinholdtsen <pere@debian.org>, Bill Allombert <ballombe@debian.org>
+Maintainer: Equipo de Desarrollo de Canaima GNU/Linux <desarrolladores@canaima.softwarelibre.gob.ve>
+Uploaders: Noel Alavarez <njesusas@gmail.com>, Petter Reinholdtsen <pere@debian.org>, Bill Allombert
+	   <ballombe@debian.org>
 Build-Depends: debhelper (>=5)
 Homepage: http://popcon.debian.org/
 Standards-Version: 3.9.3
@@ -14,13 +15,15 @@ Depends: ${misc:Depends}, ${perl:Depends}, dpkg (>= 1.10)
 Recommends: cron | fcron, exim4 | mail-transport-agent
 Suggests: anacron
 Provides: popcon
-Description: Vote for your favourite packages automatically
- The popularity-contest package sets up a cron job that will
- periodically anonymously submit to the Debian developers
- statistics about the most used Debian packages on this system.
- .
- This information helps Debian making decisions such as which packages 
- should go on the first CD. It also lets Debian improve future versions
- of the distribution so that the most popular packages are the ones which
- are installed automatically for new users.
-
+Description: popularity contest es un intento de asignar el uso de 
+paquetes de Debian. Este paquete envía todas las semanas una lista 
+de los paquetes instalados y el tiempo de acceso a los archivos 
+pertinentes al servidor a través de correo electrónico y los muestra
+en el sitio web. Todos los días el servidor envuelve el resultado
+como anonimos y publica esta encuesta.
+ 
+Esta información ayuda a la toma de decisiones en Canaima GNU/Linux, 
+como que paquetes debe ir los CD de instalacion. También le permite 
+mejorar las futuras versiones de Canaima de la distribución de modo 
+que los paquetes más populares son los que se instalan de forma 
+automática para los nuevos usuarios.

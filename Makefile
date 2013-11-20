@@ -3,9 +3,10 @@
 # ==============================================================================
 # PAQUETE: Popularity-Contest
 # ARCHIVO: Makefile
-# DESCRIPCIÓN: instalacion de las carpetas en su directorio.
+# DESCRIPCIÓN: registra en un log los paquetes instalados para enviarlo a un 
+#               servidor de correo y mostrarlos en "pagina web".
 # COPYRIGHT:
-#  (C) 2013 Sasha Veronica Solano Grosjean <sashasolano@gmail.com>
+#  (C) 2013 Noel Jesus Alvarez Suarez <njesusas@gmail.com>
 # LICENCIA: GPL3
 # ==============================================================================
 #
@@ -34,7 +35,9 @@ build:
 
 
 	@echo "Nada para compilar!"
+
 install:
+
 	@mkdir -p $(DESTDIR)/usr/sbin
 	@mkdir -p $(DESTDIR)/usr/share/popularity-contest
 	@mkdir -p $(DESTDIR)/srv/popcon-canaima/popcon-mail/all-popcon-results
@@ -73,15 +76,12 @@ install:
 	
 uninstall:
 	
-	@rm -rf $(DESTDIR)/srvpopcon-canaima/bin/clean-filter
-	@rm -rf $(DESTDIR)/srv/popcon-canaima/bin/clean-genkglist
-	@rm -rf $(DESTDIR)/srv/popcon-canaima/in/popcon.pl
-	@rm -rf $(DESTDIR)/srv/popcon-canaima/bin/popcon-stat.pl
-	@rm -rf $(DESTDIR)/srv/popcon-canaima/bin/popanal.py
-	@rm -rf $(DESTDIR)/var/lib/popcon/bin/prepop.pl
 	@rm -rf $(DESTDIR)/srv/popcon-process.sh
-	@rm -r  $(DESTDIR)/var/lib/popcon
-	@rm -r  $(DESTDIR)/srv/popcon-canaima/
+	@rm -rf $(DESTDIR)/var/lib/popcon
+	@rm -rf $(DESTDIR)/srv/popcon-canaima/
+	@rm -rf $(DESTDIR)/usr/sbin/popcon-largest-unused
+	@rm -rf $(DESTDIR)/usr/sbin/popularity-contest
+	@rm -rf $(DESTDIR)/usr/share/popularity-contest
 
 clean:
 
