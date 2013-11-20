@@ -1,3 +1,20 @@
+popularity-contest (1.56canaima1) unstable; urgency=low
+
+  [ kisaragui ]
+  * [829a93b] modificado  la capeta base popcon.debian.org a popcon-canima
+  * [344b18c] modificaciones para el emquetamiento final
+  * [271aafc] agregando carpeta imagenes
+  * [d133456] modificaciones de menores
+  * [8def758]  agregando libgraph-perl
+
+  [ root ]
+  * [3189e07] agregando popweb
+  * [1c6df69] detalles menores en popcon-process.sh
+
+  [ noel ]
+
+ -- noel <kisa_ridmon@msn.com>  Wed, 20 Nov 2013 11:43:42 -0430
+
 popularity-contest (1.56) unstable; urgency=low
 
   [ Christian Perrier ]
