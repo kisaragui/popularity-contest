@@ -37,7 +37,7 @@ find $DATADIR -type f -mtime +$DAYLIMIT -print0 | xargs -0 rm -f --
 # Generate statistics
 echo " generando estadisticas"
 find $DATADIR -type f | xargs cat \
-        | nice -15 $BINDIR/popanal.py #>$LOGDIR/popanal.out 2>&1
+        | nice -15 $BINDIR/popanal.py >$LOGDIR/popanal.out 2>&1
      echo "ejecuando popanal.py"
 cp results $WEBDIR/all-popcon-results
 echo "copiando results"
