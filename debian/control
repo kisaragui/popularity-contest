@@ -16,14 +16,13 @@ Recommends: cron | fcron, exim4 | mail-transport-agent
 Suggests: anacron
 Provides: popcon
 Description: popularity contest es un intento de asignar el uso de 
-paquetes de Debian. Este paquete envía todas las semanas una lista 
-de los paquetes instalados y el tiempo de acceso a los archivos 
-pertinentes al servidor a través de correo electrónico y los muestra
-en el sitio web. Todos los días el servidor envuelve el resultado
-como anonimos y publica esta encuesta.
- 
-Esta información ayuda a la toma de decisiones en Canaima GNU/Linux, 
-como que paquetes debe ir los CD de instalacion. También le permite 
-mejorar las futuras versiones de Canaima de la distribución de modo 
-que los paquetes más populares son los que se instalan de forma 
-automática para los nuevos usuarios.
+ paquetes de Debian. Este paquete envia todas las semanas una lista 
+ de los paquetes instalados y el tiempo de acceso a los archivos 
+ pertinentes al servidor a traves de correo electrónico y los muestra
+ en el sitio web. Todos los dias el servidor envuelve el resultado
+ como anonimos y publica esta encuesta.
+ Esta informacion ayuda a la toma de decisiones en Canaima GNU/Linux, 
+ como que paquetes debe ir los CD de instalacion. Tambien le permite 
+ mejorar las futuras versiones de Canaima de la distribucion de modo 
+ que los paquetes mas populares son los que se instalan de forma 
+ automática para los nuevos usuarios.
